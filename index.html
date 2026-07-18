@@ -53,6 +53,7 @@ img{max-width:100%;display:block;}
   background:var(--navy);
   border-bottom:1px solid var(--line-dark);
 }
+#site-header{min-height:72px;}
 .nav-inner{
   width:100%;padding:0 24px;
   height:72px;display:flex;align-items:center;justify-content:flex-start;gap:24px;
@@ -219,6 +220,19 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 
 @media (max-width:900px){
   .nav-links{display:none;}
+  .nav-links.is-open{
+    display:flex;
+    position:absolute;
+    top:72px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    padding:20px 32px;
+    background:var(--navy);
+    border-bottom:1px solid var(--line-dark);
+  }
   .hamburger{display:block;}
   .card-grid{grid-template-columns:repeat(2,1fr);}
   .about{grid-template-columns:1fr;gap:36px;}
@@ -261,7 +275,7 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 
 </style>
 </head>
-<body style="--hero-photo:url('hero.png');">
+<body style="--hero-photo:url('./images/hero.png');">
 
 <svg class="die-defs" aria-hidden="true">
 <defs>
@@ -274,30 +288,13 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 </defs>
 </svg>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="logo" href="index.html"><img src="logo.png" alt="Metagame"></a>
-    <nav class="nav-links">
-      <a href="tickets.html">Tickets</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="childrens-programming.html">Children's Programming</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a class="night-market" href="night-market.html">The Night Market</a>
-    </nav>
-    <div class="nav-right">
-      <a class="btn btn-primary btn-sm" href="tickets.html">Buy tickets</a>
-      <button class="hamburger" aria-label="Menu">&#9776;</button>
-    </div>
-  </div>
-</header>
+<div id="site-header"></div>
 
 <section class="hero">
   <div class="hero-media"></div>
   <div class="hero-inner">
     <p class="eyebrow">Nov 8-6, 2026 · Berkeley, California</p>
-    <img class="hero-logo" src="logo.png" alt="Metagame">
+    <img class="hero-logo" src="./images/logo.png" alt="Metagame">
     <p class="hero-sub"></p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="tickets.html">Buy tickets</a>
@@ -340,25 +337,25 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
     </div>
     <div class="card-grid">
       <a class="card" id="speakers" href="speakers.html">
-        <img class="chess-icon" src="chess1.png" alt="" aria-hidden="true">
+        <img class="chess-icon" src="./images/chess1.png" alt="" aria-hidden="true">
         <h3>Speakers</h3>
         <p>An array of designers and innovaters, here to engage and delight.</p>
         <span class="go">Know Those Who Speak →</span>
       </a>
       <a class="card" id="schedule" href="schedule.html">
-        <img class="chess-icon" src="chess2.png" alt="" aria-hidden="true">
+        <img class="chess-icon" src="./images/chess2.png" alt="" aria-hidden="true">
         <h3>Schedule</h3>
         <p>Time is a funny thing. Keep track of it here.</p>
         <span class="go">Browse schedule →</span>
       </a>
       <a class="card" id="faq" href="faq.html">
-        <img class="chess-icon" src="chess3.png" alt="" aria-hidden="true">
+        <img class="chess-icon" src="./images/chess3.png" alt="" aria-hidden="true">
         <h3>FAQ</h3>
         <p>Some questions frequent; others rare.</p>
         <span class="go">Gaze upon the answers →</span>
       </a>
       <a class="card" id="sponsors" href="sponsors.html">
-        <img class="chess-icon" src="chess4.png" alt="" aria-hidden="true">
+        <img class="chess-icon" src="./images/chess4.png" alt="" aria-hidden="true">
         <h3>Sponsors</h3>
         <p>They have contributed money with the hope of entrancing you; see if they are successful.</p>
         <span class="go">Honor the sponsors →</span>
@@ -369,10 +366,10 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 
 <div class="pip-divider">
   <span class="line"></span>
-  <img class="divider-icon" src="weirdchess1.png" alt="" aria-hidden="true">
-  <img class="divider-icon" src="weirdchess2.png" alt="" aria-hidden="true">
-  <img class="divider-icon" src="weirdchess3.png" alt="" aria-hidden="true">
-  <img class="divider-icon" src="weirdchess4.png" alt="" aria-hidden="true">
+  <img class="divider-icon" src="./images/weirdchess1.png" alt="" aria-hidden="true">
+  <img class="divider-icon" src="./images/weirdchess2.png" alt="" aria-hidden="true">
+  <img class="divider-icon" src="./images/weirdchess3.png" alt="" aria-hidden="true">
+  <img class="divider-icon" src="./images/weirdchess4.png" alt="" aria-hidden="true">
   <span class="line"></span>
 </div>
 
@@ -386,7 +383,7 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
       <p>--Brendan Hurst</p>
     </div>
     <div class="about-photo">
-      <img src="misc.jpg" alt="The Mask">
+      <img src="./images/misc.jpg" alt="The Mask">
     </div>
   </div>
 </section>
@@ -460,12 +457,35 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 </footer>
 
 <script>
-document.querySelector('.hamburger').addEventListener('click', function(){
-  var links = document.querySelector('.nav-links');
-  var open = links.style.display === 'flex';
-  links.style.display = open ? 'none' : 'flex';
-  links.style.cssText += open ? '' : 'position:absolute;top:72px;left:0;right:0;background:#16233a;flex-direction:column;padding:20px 32px;gap:18px;';
-});
+async function loadSiteHeader(){
+  const mount = document.getElementById('site-header');
+
+  try{
+    const response = await fetch('./header.html');
+    if(!response.ok) throw new Error(`Header request failed: ${response.status}`);
+
+    const template = document.createElement('template');
+    template.innerHTML = (await response.text()).trim();
+    const header = template.content.firstElementChild;
+
+    if(!header) throw new Error('The shared header file is empty.');
+    mount.replaceWith(header);
+
+    const hamburger = header.querySelector('.hamburger');
+    const links = header.querySelector('.nav-links');
+
+    if(hamburger && links){
+      hamburger.addEventListener('click', function(){
+        const open = links.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', String(open));
+      });
+    }
+  }catch(error){
+    console.error('Unable to load the shared site header.', error);
+  }
+}
+
+loadSiteHeader();
 </script>
 
 </body>
