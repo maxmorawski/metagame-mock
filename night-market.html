@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<!-- saved from url=(0053)file:///Users/max/Downloads/page/night-market(6).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Night Market</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./The Night Market_files/css2" rel="stylesheet">
 
   <style>
     :root{
@@ -175,7 +175,7 @@
       position:relative;
       background:#000;
       text-align:center;
-      padding:clamp(3.5rem, 9vw, 6rem) calc(var(--vine-w) + 0.5in) clamp(4rem, 10vw, 7rem);
+      padding:clamp(2.5rem, 6vw, 4rem) calc(var(--vine-w) + 0.5in) clamp(3rem, 7vw, 5rem);
     }
 
     .return-light a{
@@ -310,7 +310,7 @@
       position:relative;
       background:#000;
       text-align:center;
-      padding:clamp(1.5rem, 4vw, 2.75rem) calc(var(--vine-w) + 0.5in) clamp(3.5rem, 9vw, 6rem);
+      padding:clamp(1.25rem, 3vw, 2rem) calc(var(--vine-w) + 0.5in) clamp(1.75rem, 4vw, 3rem);
       overflow:hidden;
     }
 
@@ -345,8 +345,7 @@
     }
 
     .section-title{
-      /* offsets the .booths-inner flex gap so the title sits close to row one */
-      margin-bottom:calc(clamp(1.25rem, 2.4vw, 1.75rem) - clamp(2.5rem, 6vw, 4.5rem));
+      margin-bottom:0.25rem;
       text-align:center;
       font-family:"Bodoni Moda", Didot, Georgia, serif;
       font-weight:400;
@@ -362,11 +361,9 @@
     .booths{
       position:relative;
       background:#000;
-      min-height:100vh;
-      min-height:100dvh;
       display:flex;
       align-items:center;
-      padding:clamp(2rem, 5vw, 3.5rem) calc(var(--vine-w) + 0.5in);
+      padding:clamp(1.25rem, 3vw, 2.25rem) calc(var(--vine-w) + 0.5in) clamp(2.5rem, 5vw, 4rem);
     }
 
     .booths-inner{
@@ -376,75 +373,61 @@
       margin:0 auto;
       display:flex;
       flex-direction:column;
-      gap:clamp(2.5rem, 6vw, 4.5rem);
+      gap:clamp(1.25rem, 2.5vw, 2rem);
     }
 
-    .booth-row{
-      display:flex;
-      align-items:center;
-      gap:clamp(1.5rem, 4vw, 3.5rem);
+    .booth-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:clamp(1rem, 2.5vw, 1.75rem);
     }
 
-    .booth-tent-wrap{
+    .booth-card{
+      --booth-accent:var(--title-rgb);
       position:relative;
-      flex:0 0 clamp(170px, 19vw, 265px);
+      display:grid;
+      place-items:center;
+      min-width:0;
+      padding:clamp(1rem, 2vw, 1.6rem);
+      border:1px solid rgba(var(--title-rgb), 0.38);
+      border-radius:14px 4px;
+      background:
+        radial-gradient(circle at 0 0, rgba(var(--booth-accent), 0.15), transparent 35%),
+        radial-gradient(circle at 100% 100%, rgba(var(--booth-accent), 0.09), transparent 38%),
+        rgba(255,255,255,0.012);
+      box-shadow:
+        inset 0 0 24px rgba(var(--booth-accent), 0.04),
+        0 0 18px rgba(var(--booth-accent), 0.045);
+    }
+
+    .booth-card:nth-child(3n + 1){ --booth-accent:194,94,53; }
+    .booth-card:nth-child(3n + 2){ --booth-accent:143,184,172; }
+    .booth-card:nth-child(3n){ --booth-accent:160,63,168; }
+
+    .booth-card::before{
+      content:"";
+      position:absolute;
+      inset:6px;
+      border:1px solid rgba(var(--title-rgb), 0.12);
+      border-radius:9px 2px;
+      pointer-events:none;
     }
 
     .booth-tent{
       display:block;
-      width:100%;
+      width:min(100%, 300px);
       height:auto;
     }
 
-    .booth-label{
-      position:absolute;
-      top:57%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      font-family:"Bodoni Moda", Didot, Georgia, serif;
-      font-variant:small-caps;
-      font-weight:500;
-      font-size:clamp(1.05rem, 1.8vw, 1.6rem);
-      letter-spacing:0.06em;
-      white-space:nowrap;
+    @media (max-width:900px){
+      .booth-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
     }
 
-    .label-arts{ color:#c25e35; }
-    .label-jobs{ color:#8fb8ac; }
-    .label-experiences{ color:#a03fa8; }
-
-    .booth-copy{
-      flex:1 1 auto;
-      /* matches .intro-body */
-      font-family:"EB Garamond", Georgia, serif;
-      font-size:clamp(0.95rem, 1.5vw, 1.15rem);
-      line-height:1.65;
-      color:var(--copy);
-      opacity:0.82;
-    }
-
-    .booth-lede{
-      max-width:34em;
-    }
-
-    @media (max-width:800px){
-      .booths{
-        min-height:0;
-      }
-
-      .booth-row{
-        flex-direction:column;
-        text-align:center;
-      }
-
-      .booth-tent-wrap{
-        order:-1;
-        flex-basis:auto;
-        width:min(220px, 55vw);
-      }
-
-      .booth-lede{
-        max-width:100%;
+    @media (max-width:600px){
+      .booth-grid{
+        grid-template-columns:1fr;
       }
     }
 
@@ -457,61 +440,56 @@
 </head>
 <body>
   <div class="page-vines" aria-hidden="true">
-    <img class="vine vine-left" src="vine-left.jpg" alt="">
-    <img class="vine vine-right" src="vine-right.jpg" alt="">
+    <img class="vine vine-left" src="./The Night Market_files/vine-left.jpg" alt="">
+    <img class="vine vine-right" src="./The Night Market_files/vine-right.jpg" alt="">
   </div>
 
   <main class="night-market">
-    <img
-      class="artwork"
-      src="night-market-background.png"
-      alt=""
-      aria-hidden="true"
-    >
+    <img class="artwork" src="./The Night Market_files/night-market-background.png" alt="" aria-hidden="true">
 
     <div class="hero-decor" aria-hidden="true">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:87.7%; top:17.6%; --tw:0.48; width:clamp(7px,0.9vw,16px); animation-delay:-5.4s; animation-duration:5.5s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:39.8%; top:4.0%; --tw:0.59; width:clamp(7px,1.1vw,13px); animation-delay:-0.6s; animation-duration:6.9s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:11.2%; top:18.7%; --tw:0.63; width:clamp(7px,0.9vw,15px); animation-delay:-5.9s; animation-duration:4.7s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:82.2%; top:85.7%; --tw:0.73; width:clamp(7px,0.9vw,13px); animation-delay:-1.9s; animation-duration:4.8s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:52.7%; top:19.5%; --tw:0.52; width:clamp(7px,0.9vw,14px); animation-delay:-0.4s; animation-duration:4.4s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:7.6%; top:3.4%; --tw:0.53; width:clamp(7px,1.0vw,14px); animation-delay:-1.8s; animation-duration:4.7s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:16.6%; top:58.1%; --tw:0.54; width:clamp(9px,1.4vw,18px); animation-delay:-2.0s; animation-duration:4.7s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:81.8%; top:78.4%; --tw:0.54; width:clamp(9px,1.5vw,22px); animation-delay:-2.9s; animation-duration:4.0s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:72.8%; top:85.8%; --tw:0.54; width:clamp(7px,1.1vw,12px); animation-delay:-2.9s; animation-duration:4.8s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:50.3%; top:90.9%; --tw:0.47; width:clamp(7px,0.9vw,14px); animation-delay:-0.0s; animation-duration:5.6s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:43.5%; top:80.0%; --tw:0.52; width:clamp(7px,1.1vw,15px); animation-delay:-2.7s; animation-duration:5.9s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:87.7%; top:53.6%; --tw:0.66; animation-delay:-4.7s; animation-duration:5.2s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:10.9%; top:92.2%; --tw:0.45; animation-delay:-2.3s; animation-duration:7.1s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:22.3%; top:13.0%; --tw:0.68; width:clamp(7px,0.9vw,16px); animation-delay:-3.8s; animation-duration:6.9s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:8.9%; top:82.4%; --tw:0.77; animation-delay:-0.2s; animation-duration:4.3s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:6.3%; top:36.8%; --tw:0.51; width:clamp(7px,1.1vw,14px); animation-delay:-2.1s; animation-duration:6.4s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:26.5%; top:6.9%; --tw:0.54; width:clamp(7px,0.9vw,13px); animation-delay:-4.7s; animation-duration:5.5s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:93.8%; top:70.2%; --tw:0.69; width:clamp(7px,1.0vw,13px); animation-delay:-5.8s; animation-duration:6.4s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:83.0%; top:59.0%; --tw:0.62; width:clamp(9px,1.5vw,19px); animation-delay:-1.0s; animation-duration:4.3s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:89.8%; top:36.5%; --tw:0.72; width:clamp(9px,1.3vw,20px); animation-delay:-0.3s; animation-duration:5.0s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:17.0%; top:87.4%; --tw:0.46; width:clamp(7px,1.0vw,12px); animation-delay:-5.2s; animation-duration:6.6s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:91.3%; top:84.4%; --tw:0.58; width:clamp(7px,1.2vw,12px); animation-delay:-1.6s; animation-duration:5.3s;">
-      <img class="decor-butterfly" src="butterfly-1.svg" alt="" style="left:16%; top:32%;">
-      <img class="decor-butterfly" src="butterfly-3.svg" alt="" style="left:84%; top:24%;">
-      <img class="decor-butterfly" src="butterfly-3.svg" alt="" style="left:79%; top:70%; width:clamp(22px,3vw,40px);">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:87.7%; top:17.6%; --tw:0.48; width:clamp(7px,0.9vw,16px); animation-delay:-5.4s; animation-duration:5.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:39.8%; top:4.0%; --tw:0.59; width:clamp(7px,1.1vw,13px); animation-delay:-0.6s; animation-duration:6.9s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:11.2%; top:18.7%; --tw:0.63; width:clamp(7px,0.9vw,15px); animation-delay:-5.9s; animation-duration:4.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:82.2%; top:85.7%; --tw:0.73; width:clamp(7px,0.9vw,13px); animation-delay:-1.9s; animation-duration:4.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:52.7%; top:19.5%; --tw:0.52; width:clamp(7px,0.9vw,14px); animation-delay:-0.4s; animation-duration:4.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:7.6%; top:3.4%; --tw:0.53; width:clamp(7px,1.0vw,14px); animation-delay:-1.8s; animation-duration:4.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:16.6%; top:58.1%; --tw:0.54; width:clamp(9px,1.4vw,18px); animation-delay:-2.0s; animation-duration:4.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:81.8%; top:78.4%; --tw:0.54; width:clamp(9px,1.5vw,22px); animation-delay:-2.9s; animation-duration:4.0s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:72.8%; top:85.8%; --tw:0.54; width:clamp(7px,1.1vw,12px); animation-delay:-2.9s; animation-duration:4.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:50.3%; top:90.9%; --tw:0.47; width:clamp(7px,0.9vw,14px); animation-delay:-0.0s; animation-duration:5.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:43.5%; top:80.0%; --tw:0.52; width:clamp(7px,1.1vw,15px); animation-delay:-2.7s; animation-duration:5.9s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:87.7%; top:53.6%; --tw:0.66; animation-delay:-4.7s; animation-duration:5.2s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:10.9%; top:92.2%; --tw:0.45; animation-delay:-2.3s; animation-duration:7.1s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:22.3%; top:13.0%; --tw:0.68; width:clamp(7px,0.9vw,16px); animation-delay:-3.8s; animation-duration:6.9s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:8.9%; top:82.4%; --tw:0.77; animation-delay:-0.2s; animation-duration:4.3s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:6.3%; top:36.8%; --tw:0.51; width:clamp(7px,1.1vw,14px); animation-delay:-2.1s; animation-duration:6.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:26.5%; top:6.9%; --tw:0.54; width:clamp(7px,0.9vw,13px); animation-delay:-4.7s; animation-duration:5.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:93.8%; top:70.2%; --tw:0.69; width:clamp(7px,1.0vw,13px); animation-delay:-5.8s; animation-duration:6.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:83.0%; top:59.0%; --tw:0.62; width:clamp(9px,1.5vw,19px); animation-delay:-1.0s; animation-duration:4.3s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:89.8%; top:36.5%; --tw:0.72; width:clamp(9px,1.3vw,20px); animation-delay:-0.3s; animation-duration:5.0s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:17.0%; top:87.4%; --tw:0.46; width:clamp(7px,1.0vw,12px); animation-delay:-5.2s; animation-duration:6.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:91.3%; top:84.4%; --tw:0.58; width:clamp(7px,1.2vw,12px); animation-delay:-1.6s; animation-duration:5.3s;">
+      <img class="decor-butterfly" src="./The Night Market_files/butterfly-1.svg" alt="" style="left:16%; top:32%;">
+      <img class="decor-butterfly" src="./The Night Market_files/butterfly-3.svg" alt="" style="left:84%; top:24%;">
+      <img class="decor-butterfly" src="./The Night Market_files/butterfly-3.svg" alt="" style="left:79%; top:70%; width:clamp(22px,3vw,40px);">
 
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:30%; top:17%; --tw:0.85; animation-delay:-0.5s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:49%; top:12%; --tw:0.75; width:clamp(14px,2.2vw,30px); animation-delay:-2s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:68%; top:18%; --tw:0.8; animation-delay:-3.4s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:11%; top:50%; --tw:0.7; animation-delay:-1.4s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:89%; top:47%; --tw:0.75; animation-delay:-4.2s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:35%; top:82%; --tw:0.7; width:clamp(9px,1.4vw,18px); animation-delay:-2.8s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:62%; top:84%; --tw:0.65; width:clamp(9px,1.5vw,20px); animation-delay:-5s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:76%; top:9%; --tw:0.65; width:clamp(9px,1.4vw,18px); animation-delay:-1.8s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:34.8%; top:17.3%; --tw:0.59; width:clamp(9px,1.4vw,19px); animation-delay:-4.8s; animation-duration:6.8s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:63.0%; top:10.4%; --tw:0.43; width:clamp(7px,1.1vw,14px); animation-delay:-4.4s; animation-duration:5.2s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:12.0%; top:48.7%; --tw:0.78; width:clamp(7px,1.1vw,16px); animation-delay:-4.7s; animation-duration:7.3s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:13.0%; top:12.0%; --tw:0.68; animation-delay:-3.0s; animation-duration:7.2s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:17.6%; top:23.6%; --tw:0.51; width:clamp(9px,1.6vw,20px); animation-delay:-0.1s; animation-duration:5.8s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:61.0%; top:87.4%; --tw:0.64; width:clamp(9px,1.3vw,20px); animation-delay:-0.8s; animation-duration:5.0s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:91.0%; top:8.1%; --tw:0.77; width:clamp(9px,1.3vw,21px); animation-delay:-2.4s; animation-duration:5.1s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:80.8%; top:29.5%; --tw:0.73; animation-delay:-1.7s; animation-duration:5.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:30%; top:17%; --tw:0.85; animation-delay:-0.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:49%; top:12%; --tw:0.75; width:clamp(14px,2.2vw,30px); animation-delay:-2s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:68%; top:18%; --tw:0.8; animation-delay:-3.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:11%; top:50%; --tw:0.7; animation-delay:-1.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:89%; top:47%; --tw:0.75; animation-delay:-4.2s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:35%; top:82%; --tw:0.7; width:clamp(9px,1.4vw,18px); animation-delay:-2.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:62%; top:84%; --tw:0.65; width:clamp(9px,1.5vw,20px); animation-delay:-5s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:76%; top:9%; --tw:0.65; width:clamp(9px,1.4vw,18px); animation-delay:-1.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:34.8%; top:17.3%; --tw:0.59; width:clamp(9px,1.4vw,19px); animation-delay:-4.8s; animation-duration:6.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:63.0%; top:10.4%; --tw:0.43; width:clamp(7px,1.1vw,14px); animation-delay:-4.4s; animation-duration:5.2s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:12.0%; top:48.7%; --tw:0.78; width:clamp(7px,1.1vw,16px); animation-delay:-4.7s; animation-duration:7.3s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:13.0%; top:12.0%; --tw:0.68; animation-delay:-3.0s; animation-duration:7.2s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:17.6%; top:23.6%; --tw:0.51; width:clamp(9px,1.6vw,20px); animation-delay:-0.1s; animation-duration:5.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:61.0%; top:87.4%; --tw:0.64; width:clamp(9px,1.3vw,20px); animation-delay:-0.8s; animation-duration:5.0s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:91.0%; top:8.1%; --tw:0.77; width:clamp(9px,1.3vw,21px); animation-delay:-2.4s; animation-duration:5.1s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:80.8%; top:29.5%; --tw:0.73; animation-delay:-1.7s; animation-duration:5.7s;">
     
     </div>
 
@@ -521,33 +499,33 @@
         <span class="title-night-market">Night Market</span>
       </h1>
 
-      <p class="tagline">One night of art, opportunity, and wonder under the lights</p>
+      <p class="tagline">See what is sold in the dark.</p>
 
       <div class="hero-actions">
-        <a class="btn" href="#">Buy a Booth</a>
-        <a class="btn btn-vendors" href="#">View Our Vendors<img class="btn-butterfly" src="butterfly-2.svg" alt="" aria-hidden="true"></a>
+        <a class="btn" href="./The Night Market_files/night-market.html#">Buy a Booth</a>
+        <a class="btn btn-vendors" href="./The Night Market_files/night-market(6).html#">View Our Vendors<img class="btn-butterfly" src="./The Night Market_files/butterfly-2.svg" alt="" aria-hidden="true"></a>
       </div>
 
-      <p class="event-date">Friday, November 6th from 7&ndash;10pm</p>
+      <p class="event-date">Friday, November 6th from 7–10pm</p>
     </div>
   </main>
 
   <section class="intro">
     <div class="intro-stars" aria-hidden="true">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:87.0%; top:59.8%; --tw:0.64; animation-delay:-5.5s; animation-duration:4.8s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:16.5%; top:91.3%; --tw:0.46; width:clamp(7px,0.9vw,15px); animation-delay:-5.5s; animation-duration:7.0s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:15.3%; top:18.1%; --tw:0.64; width:clamp(9px,1.5vw,21px); animation-delay:-1.5s; animation-duration:7.5s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:83.2%; top:11.2%; --tw:0.75; animation-delay:-2.0s; animation-duration:5.6s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:87.0%; top:27.3%; --tw:0.52; width:clamp(7px,1.1vw,15px); animation-delay:-1.9s; animation-duration:7.9s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:88.6%; top:90.9%; --tw:0.52; width:clamp(7px,0.9vw,13px); animation-delay:-5.9s; animation-duration:7.3s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:91.6%; top:73.4%; --tw:0.59; width:clamp(7px,1.0vw,14px); animation-delay:-2.7s; animation-duration:4.5s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:6.3%; top:48.8%; --tw:0.52; width:clamp(7px,1.1vw,13px); animation-delay:-4.4s; animation-duration:6.7s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:11.8%; top:30.6%; --tw:0.49; width:clamp(7px,0.9vw,13px); animation-delay:-2.0s; animation-duration:6.2s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:69.1%; top:89.9%; --tw:0.54; width:clamp(7px,1.2vw,13px); animation-delay:-5.1s; animation-duration:5.5s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:37.6%; top:8.1%; --tw:0.78; width:clamp(7px,1.1vw,13px); animation-delay:-6.0s; animation-duration:5.6s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:39.4%; top:89.6%; --tw:0.74; width:clamp(7px,1.0vw,13px); animation-delay:-3.0s; animation-duration:5.3s;">
-      <img class="decor-butterfly" src="butterfly-1.svg" alt="" style="left:11%; top:30%; width:clamp(24px,3.2vw,44px);">
-      <img class="decor-butterfly" src="butterfly-3.svg" alt="" style="left:88%; top:64%; width:clamp(20px,2.8vw,38px);">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:87.0%; top:59.8%; --tw:0.64; animation-delay:-5.5s; animation-duration:4.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:16.5%; top:91.3%; --tw:0.46; width:clamp(7px,0.9vw,15px); animation-delay:-5.5s; animation-duration:7.0s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:15.3%; top:18.1%; --tw:0.64; width:clamp(9px,1.5vw,21px); animation-delay:-1.5s; animation-duration:7.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:83.2%; top:11.2%; --tw:0.75; animation-delay:-2.0s; animation-duration:5.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:87.0%; top:27.3%; --tw:0.52; width:clamp(7px,1.1vw,15px); animation-delay:-1.9s; animation-duration:7.9s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:88.6%; top:90.9%; --tw:0.52; width:clamp(7px,0.9vw,13px); animation-delay:-5.9s; animation-duration:7.3s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:91.6%; top:73.4%; --tw:0.59; width:clamp(7px,1.0vw,14px); animation-delay:-2.7s; animation-duration:4.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:6.3%; top:48.8%; --tw:0.52; width:clamp(7px,1.1vw,13px); animation-delay:-4.4s; animation-duration:6.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:11.8%; top:30.6%; --tw:0.49; width:clamp(7px,0.9vw,13px); animation-delay:-2.0s; animation-duration:6.2s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:69.1%; top:89.9%; --tw:0.54; width:clamp(7px,1.2vw,13px); animation-delay:-5.1s; animation-duration:5.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:37.6%; top:8.1%; --tw:0.78; width:clamp(7px,1.1vw,13px); animation-delay:-6.0s; animation-duration:5.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:39.4%; top:89.6%; --tw:0.74; width:clamp(7px,1.0vw,13px); animation-delay:-3.0s; animation-duration:5.3s;">
+      <img class="decor-butterfly" src="./The Night Market_files/butterfly-1.svg" alt="" style="left:11%; top:30%; width:clamp(24px,3.2vw,44px);">
+      <img class="decor-butterfly" src="./The Night Market_files/butterfly-3.svg" alt="" style="left:88%; top:64%; width:clamp(20px,2.8vw,38px);">
     </div>
     <div class="intro-inner">
       <h2 class="intro-heading">What is the Night Market?</h2>
@@ -559,87 +537,24 @@
     <div class="booths-inner">
       <h2 class="section-title">Our Booths</h2>
 
-      <div class="booth-row">
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-arts.jpg" alt="">
-          <span class="booth-label label-arts">Arts</span>
+      <div class="booth-grid">
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-arts.jpg" alt="Arts booth">
         </div>
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-jobs.jpg" alt="Jobs booth">
         </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-experiences.jpg" alt="Experiences booth">
         </div>
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-jobs.jpg" alt="">
-          <span class="booth-label label-jobs">Jobs</span>
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-arts.jpg" alt="Arts booth">
         </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-experiences.jpg" alt="">
-          <span class="booth-label label-experiences">Experiences</span>
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-jobs.jpg" alt="Jobs booth">
         </div>
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
-        </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
-        </div>
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-arts.jpg" alt="">
-          <span class="booth-label label-arts">Booth 4</span>
-        </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-jobs.jpg" alt="">
-          <span class="booth-label label-jobs">Booth 5</span>
-        </div>
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
-        </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
-        </div>
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-experiences.jpg" alt="">
-          <span class="booth-label label-experiences">Booth 6</span>
-        </div>
-      </div>
-
-      <div class="booth-row">
-        <div class="booth-tent-wrap">
-          <img class="booth-tent" src="tent-arts.jpg" alt="">
-          <span class="booth-label label-arts">Booth 7</span>
-        </div>
-        <div class="booth-copy">
-          <p class="booth-lede">Come to our art booth it will have art and other weird shenanigans</p>
-          <p class="booth-detail">text</p>
-          <p class="booth-detail">text</p>
+        <div class="booth-card">
+          <img class="booth-tent" src="./The Night Market_files/tent-experiences.jpg" alt="Experiences booth">
         </div>
       </div>
 
@@ -648,20 +563,21 @@
 
   <footer class="return-light">
     <div class="footer-stars" aria-hidden="true">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:21%; top:30%; --tw:0.8; animation-delay:-1s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:33%; top:72%; --tw:0.7; width:clamp(10px,1.6vw,20px); animation-delay:-3s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:44%; top:20%; --tw:0.75; animation-delay:-2s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:59%; top:76%; --tw:0.7; width:clamp(10px,1.6vw,20px); animation-delay:-4.4s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:70%; top:26%; --tw:0.8; animation-delay:-0.6s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:83%; top:58%; --tw:0.7; width:clamp(10px,1.7vw,22px); animation-delay:-2.8s;">
-      <img class="decor-star" src="star-3.jpg" alt="" style="left:12%; top:62%; --tw:0.65; width:clamp(9px,1.5vw,18px); animation-delay:-5s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:89%; top:32%; --tw:0.65; width:clamp(9px,1.5vw,18px); animation-delay:-1.6s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:51.3%; top:37.1%; --tw:0.43; width:clamp(7px,0.9vw,13px); animation-delay:-1.6s; animation-duration:4.5s;">
-      <img class="decor-star" src="star-1.jpg" alt="" style="left:60.4%; top:51.0%; --tw:0.65; width:clamp(7px,0.9vw,13px); animation-delay:-0.4s; animation-duration:7.5s;">
-      <img class="decor-star" src="star-4.jpg" alt="" style="left:13.4%; top:88.8%; --tw:0.4; animation-delay:-2.5s; animation-duration:7.7s;">
-      <img class="decor-star" src="star-2.jpg" alt="" style="left:74.2%; top:87.7%; --tw:0.42; width:clamp(7px,1.2vw,13px); animation-delay:-1.6s; animation-duration:4.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:21%; top:30%; --tw:0.8; animation-delay:-1s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:33%; top:72%; --tw:0.7; width:clamp(10px,1.6vw,20px); animation-delay:-3s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:44%; top:20%; --tw:0.75; animation-delay:-2s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:59%; top:76%; --tw:0.7; width:clamp(10px,1.6vw,20px); animation-delay:-4.4s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:70%; top:26%; --tw:0.8; animation-delay:-0.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:83%; top:58%; --tw:0.7; width:clamp(10px,1.7vw,22px); animation-delay:-2.8s;">
+      <img class="decor-star" src="./The Night Market_files/star-3.jpg" alt="" style="left:12%; top:62%; --tw:0.65; width:clamp(9px,1.5vw,18px); animation-delay:-5s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:89%; top:32%; --tw:0.65; width:clamp(9px,1.5vw,18px); animation-delay:-1.6s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:51.3%; top:37.1%; --tw:0.43; width:clamp(7px,0.9vw,13px); animation-delay:-1.6s; animation-duration:4.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-1.jpg" alt="" style="left:60.4%; top:51.0%; --tw:0.65; width:clamp(7px,0.9vw,13px); animation-delay:-0.4s; animation-duration:7.5s;">
+      <img class="decor-star" src="./The Night Market_files/star-4.jpg" alt="" style="left:13.4%; top:88.8%; --tw:0.4; animation-delay:-2.5s; animation-duration:7.7s;">
+      <img class="decor-star" src="./The Night Market_files/star-2.jpg" alt="" style="left:74.2%; top:87.7%; --tw:0.42; width:clamp(7px,1.2vw,13px); animation-delay:-1.6s; animation-duration:4.7s;">
     </div>
-    <a href="#">return to the light</a>
+    <a href="index.html">return to the light</a>
   </footer>
-</body>
-</html>
+
+
+</body></html>
