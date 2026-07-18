@@ -1,19 +1,368 @@
-<header class="nav">
-  <div class="nav-inner">
-    <a class="logo" href="index.html">
-      <img src="images/logo.png" alt="Metagame">
-    </a>
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="schedule.html">Schedule</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="childrens-programming.html">Children's Programming</a>
-      <a href="sponsors.html">Sponsors</a>
-      <a href="faq.html">FAQ</a>
-      <a class="night-market" href="night-market.html">The Night Market</a>
-    </nav>
-    <div class="nav-right">
-      <a class="btn btn-primary btn-sm" href="tickets.html">Buy tickets</a>
-      <button class="hamburger" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
+<style data-shared-header-styles>
+  .site-header {
+    display: contents;
+  }
+
+  /* ==============================
+     TOP NAVIGATION SPACING
+     ============================== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+
+    /* Navigation height */
+    height: 73px;
+    min-height: 73px;
+
+    background: var(--navy, #173059);
+    border-bottom: 1px solid
+      var(--line-dark, rgba(246, 239, 227, 0.14));
+    font-family: "Inter", Arial, sans-serif;
+  }
+
+  .nav-inner {
+    width: 100%;
+    height: 72px;
+
+    /* Horizontal navigation spacing */
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav .logo {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  .nav .logo img {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: 70px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: auto;
+
+    /* Space between navigation links */
+    gap: clamp(14px, 2vw, 36px);
+
+    white-space: nowrap;
+  }
+
+  .nav-links a {
+    position: relative;
+    padding: 6px 0;
+    color: var(--cream, #fff5f2);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--blue, #4d9ff7);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.18s ease;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.current::after,
+  .nav-links a[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  .nav-links a.night-market {
+    color: #fa8072;
+  }
+
+  .nav-links a.night-market::after {
+    background: #fa8072;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 0 0 auto;
+  }
+
+  .nav .btn,
+  .hero .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border: 1.5px solid transparent;
+    border-radius: 8px;
+    color: #fff;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.55;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      transform 0.15s ease,
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .nav .btn:hover,
+  .hero .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .nav .btn-primary,
+  .hero .btn-primary {
+    background: var(--meeple, #d8502b);
+  }
+
+  .nav .btn-primary:hover,
+  .hero .btn-primary:hover {
+    background: var(--meeple-dark, #b8431f);
+  }
+
+  .nav .btn-sm {
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+
+  .hero .btn-ghost {
+    border-color: rgba(246, 239, 227, 0.55);
+    background: transparent;
+    color: var(--cream, #fff5f2);
+  }
+
+  .hero .btn-ghost:hover {
+    border-color: var(--cream, #fff5f2);
+    background: rgba(246, 239, 227, 0.08);
+  }
+
+  .hamburger {
+    display: none;
+    border: 0;
+    background: none;
+    color: var(--cream, #fff5f2);
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  /* ==============================
+     HERO SECTION
+     ============================== */
+  .hero {
+    position: relative;
+
+    /* Overall hero height */
+    height: 480px;
+    min-height: 480px;
+
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: var(--cream, #fff5f2);
+  }
+
+  /* ==============================
+     HERO BACKGROUND IMAGE
+     ============================== */
+  .hero-media {
+    position: absolute;
+    inset: 0;
+
+    /* Hero image location */
+    background-image: url("./images/hero.png");
+
+    background-position: center 30%;
+    background-size: cover;
+  }
+
+  .hero-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+
+    /* HERO CONTENT SPACING:
+       top | left/right | bottom */
+    padding: 64px 32px 48px;
+
+    text-align: center;
+  }
+
+  .hero .eyebrow {
+    color: var(--tan, #e2a85c);
+    font-family: "Space Mono", monospace;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .hero-logo {
+    display: block;
+    width: auto;
+    height: 170px;
+    max-width: calc(100vw - 64px);
+
+    /* Space above and below the hero logo */
+    margin: 18px auto 22px;
+
+    object-fit: contain;
+  }
+
+  .hero-sub {
+    min-height: 1.55em;
+    max-width: 560px;
+
+    /* Space beneath the subtitle */
+    margin: 0 auto 34px;
+
+    color: rgba(246, 239, 227, 0.86);
+    font-size: 19px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /* Space between hero buttons */
+    gap: 14px;
+
+    /* Moves the buttons upward */
+    transform: translateY(-64px);
+  }
+
+  @media (max-width: 1180px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-links.is-open {
+      position: absolute;
+      top: 72px;
+      right: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 20px 32px;
+      background: var(--navy, #173059);
+      border-bottom: 1px solid
+        var(--line-dark, rgba(246, 239, 227, 0.14));
+    }
+
+    .hamburger {
+      display: block;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-logo {
+      height: 90px;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<!-- ==============================
+     COMPLETE SHARED HEADER
+     ============================== -->
+<header class="site-header">
+
+  <!-- TOP NAVIGATION -->
+  <div class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <img src="./images/logo.png" alt="Metagame">
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="tickets.html">Tickets</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="childrens-programming.html">
+          Children's Programming
+        </a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="faq.html">FAQ</a>
+        <a class="night-market" href="night-market.html">
+          The Night Market
+        </a>
+      </nav>
+
+      <div class="nav-right">
+        <a class="btn btn-primary btn-sm" href="tickets.html">
+          Buy tickets
+        </a>
+
+        <button
+          class="hamburger"
+          type="button"
+          aria-label="Menu"
+          aria-expanded="false"
+        >
+          &#9776;
+        </button>
+      </div>
     </div>
   </div>
+
+  <!-- ==============================
+       HERO SECTION STARTS HERE
+       ============================== -->
+  <section class="hero">
+    <!-- Background image is set by .hero-media above -->
+    <div class="hero-media"></div>
+
+    <div class="hero-inner">
+      <p class="eyebrow">
+        Nov 6–8, 2026 · Berkeley, California
+      </p>
+
+      <img
+        class="hero-logo"
+        src="./images/logo.png"
+        alt="Metagame"
+      >
+
+      <p class="hero-sub"></p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tickets.html">
+          Buy tickets
+        </a>
+
+        <a
+          class="btn btn-ghost"
+          href="mailto:team@metagame.games"
+        >
+          Ask a question
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- HERO SECTION ENDS HERE -->
+
 </header>
