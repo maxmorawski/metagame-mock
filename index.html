@@ -47,34 +47,6 @@ img{max-width:100%;display:block;}
 
 .die{width:34px;height:34px;flex:none;}
 
-/* nav */
-.nav{
-  position:sticky;top:0;z-index:50;
-  background:var(--navy);
-  border-bottom:1px solid var(--line-dark);
-}
-#site-header{min-height:72px;}
-.nav-inner{
-  width:100%;padding:0 24px;
-  height:72px;display:flex;align-items:center;justify-content:flex-start;gap:24px;
-}
-.logo{display:flex;align-items:center;}
-.logo img{height:clamp(32px, 20vw, 70px);width:auto;display:block;}
-.nav-links{display:flex;gap:36px;align-items:center;margin-left:auto;}
-.nav-links a{
-  color:var(--cream);font-size:15px;font-weight:500;
-  position:relative;padding:6px 0;
-}
-.nav-links a::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
-  background:var(--blue);transform:scaleX(0);transform-origin:left;
-  transition:transform .18s ease;
-}
-.nav-links a:hover::after{transform:scaleX(1);}
-.nav-links a.night-market{color:#FA8072ff;}
-.nav-links a.night-market::after{background:#FA8072ff;}
-.nav-right{display:flex;align-items:center;gap:20px;}
-
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   font-family:'Inter',sans-serif;font-weight:600;font-size:15px;
@@ -88,27 +60,6 @@ img{max-width:100%;display:block;}
 .btn-ghost{border-color:rgba(246,239,227,0.55);color:var(--cream);}
 .btn-ghost:hover{border-color:var(--cream);background:rgba(246,239,227,0.08);}
 .btn-sm{padding:9px 16px;font-size:14px;}
-.hamburger{display:none;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;}
-
-/* hero */
-.hero{
-  position:relative;color:var(--cream);
-  min-height:min(58vh, 480px);
-  display:flex;align-items:flex-end;
-  overflow:hidden;
-}
-.hero-media{
-  position:absolute;inset:0;
-  background-image:var(--hero-photo);
-  background-size:cover;background-position:center 30%;
-}
-.hero-inner{position:relative;padding:64px 32px 48px;max-width:1180px;margin:0 auto;width:100%;text-align:center;}
-.hero h1{font-size:clamp(42px, 7vw, 84px);margin:18px 0 22px;}
-.hero-logo{height:clamp(90px, 16vw, 170px);width:auto;margin:18px auto 22px;}
-.hero-sub{font-size:19px;max-width:560px;color:rgba(246,239,227,0.86);margin:0 auto 34px;min-height:1.55em;}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;transform:translateY(-64px);}
-.hero .eyebrow{color:var(--tan);}
-
 /* section heading */
 .section{padding:88px 0;}
 #whats-on{padding-top:44px;}
@@ -219,21 +170,6 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 .foot-social{display:flex;gap:16px;}
 
 @media (max-width:900px){
-  .nav-links{display:none;}
-  .nav-links.is-open{
-    display:flex;
-    position:absolute;
-    top:72px;
-    left:0;
-    right:0;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:18px;
-    padding:20px 32px;
-    background:var(--navy);
-    border-bottom:1px solid var(--line-dark);
-  }
-  .hamburger{display:block;}
   .card-grid{grid-template-columns:repeat(2,1fr);}
   .about{grid-template-columns:1fr;gap:36px;}
   .about-photo{max-width:360px;}
@@ -243,7 +179,6 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 @media (max-width:560px){
   .card-grid{grid-template-columns:1fr;}
   .foot-grid{grid-template-columns:1fr;}
-  .hero-cta .btn{width:100%;}
 }
 
 
@@ -275,7 +210,7 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 
 </style>
 </head>
-<body style="--hero-photo:url('./images/hero.png');">
+<body>
 
 <svg class="die-defs" aria-hidden="true">
 <defs>
@@ -288,20 +223,7 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 </defs>
 </svg>
 
-<div id="site-header"></div>
-
-<section class="hero">
-  <div class="hero-media"></div>
-  <div class="hero-inner">
-    <p class="eyebrow">Nov 8-6, 2026 · Berkeley, California</p>
-    <img class="hero-logo" src="./images/logo.png" alt="Metagame">
-    <p class="hero-sub"></p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="tickets.html">Buy tickets</a>
-      <a class="btn btn-ghost" href="mailto:team@metagame.games">Ask a question</a>
-    </div>
-  </div>
-</section>
+<div id="site-header" style="min-height:552px;"></div>
 
 <style>
 /* Isolate all index-only layouts from the shared header and hero. */
@@ -331,7 +253,7 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 <section class="section" id="whats-on">
   <div class="wrap">
     <div class="section-head">
-      <h2>A Con Like No Other</h2>
+      <h2>Games, designs, puzzles.</h2>
       <p>This convention is a conundrum, sent to confound you. It is a puzzle. A riddle. There will be game designers in nooks and alcoves, whispering their secrets to knowing audiences. You will be competing, but you may not know against who. And, above all else, there will be <b>games.</b></p>
       <p>Still confused? <a href="faq.html#first-faq" style="color:#FA8072;font-weight:700;">Click here.</a></p>
     </div>
@@ -461,23 +383,62 @@ async function loadSiteHeader(){
   const mount = document.getElementById('site-header');
 
   try{
-    const response = await fetch('./header.html');
+    const headerRequestUrl = new URL('./header.html', window.location.href);
+    const response = await fetch(headerRequestUrl);
     if(!response.ok) throw new Error(`Header request failed: ${response.status}`);
+    const headerUrl = new URL(response.url || headerRequestUrl.href);
 
     const template = document.createElement('template');
     template.innerHTML = (await response.text()).trim();
-    const header = template.content.firstElementChild;
+    const fragment = template.content;
+    const header = fragment.querySelector('.nav');
 
-    if(!header) throw new Error('The shared header file is empty.');
-    mount.replaceWith(header);
+    if(!header) throw new Error('The shared header file does not contain the navigation.');
+
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    header.querySelectorAll('.nav-links a[href]').forEach(function(link){
+      const href = link.getAttribute('href');
+
+      if(href === currentPage){
+        link.classList.add('current');
+        link.setAttribute('aria-current', 'page');
+      }
+
+      if(href && !href.startsWith('#') && !/^[a-z][a-z0-9+.-]*:/i.test(href)){
+        link.href = new URL(href, headerUrl).href;
+      }
+    });
+
+    fragment.querySelectorAll('img[src]').forEach(function(image){
+      const src = image.getAttribute('src');
+
+      if(src && !src.startsWith('/') && !/^[a-z][a-z0-9+.-]*:/i.test(src)){
+        image.src = new URL(src, headerUrl).href;
+      }
+    });
+
+    const sharedHeroMedia = fragment.querySelector('.hero-media');
+    if(sharedHeroMedia){
+      const heroImageUrl = new URL('./images/hero.png', headerUrl).href;
+      sharedHeroMedia.style.backgroundImage = `url("${heroImageUrl}")`;
+    }
 
     const hamburger = header.querySelector('.hamburger');
     const links = header.querySelector('.nav-links');
+
+    mount.replaceWith(fragment);
 
     if(hamburger && links){
       hamburger.addEventListener('click', function(){
         const open = links.classList.toggle('is-open');
         hamburger.setAttribute('aria-expanded', String(open));
+      });
+
+      window.addEventListener('resize', function(){
+        if(window.matchMedia('(min-width:1181px)').matches){
+          links.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
       });
     }
   }catch(error){
