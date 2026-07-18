@@ -47,33 +47,6 @@ img{max-width:100%;display:block;}
 
 .die{width:34px;height:34px;flex:none;}
 
-/* nav */
-.nav{
-  position:sticky;top:0;z-index:50;
-  background:var(--navy);
-  border-bottom:1px solid var(--line-dark);
-}
-.nav-inner{
-  width:100%;padding:0 24px;
-  height:72px;display:flex;align-items:center;justify-content:flex-start;gap:24px;
-}
-.logo{display:flex;align-items:center;}
-.logo img{height:clamp(32px, 20vw, 70px);width:auto;display:block;}
-.nav-links{display:flex;gap:36px;align-items:center;margin-left:auto;}
-.nav-links a{
-  color:var(--cream);font-size:15px;font-weight:500;
-  position:relative;padding:6px 0;
-}
-.nav-links a::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
-  background:var(--blue);transform:scaleX(0);transform-origin:left;
-  transition:transform .18s ease;
-}
-.nav-links a:hover::after{transform:scaleX(1);}
-.nav-links a.night-market{color:#FA8072ff;}
-.nav-links a.night-market::after{background:#FA8072ff;}
-.nav-right{display:flex;align-items:center;gap:20px;}
-
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   font-family:'Inter',sans-serif;font-weight:600;font-size:15px;
@@ -87,27 +60,6 @@ img{max-width:100%;display:block;}
 .btn-ghost{border-color:rgba(246,239,227,0.55);color:var(--cream);}
 .btn-ghost:hover{border-color:var(--cream);background:rgba(246,239,227,0.08);}
 .btn-sm{padding:9px 16px;font-size:14px;}
-.hamburger{display:none;background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;}
-
-/* hero */
-.hero{
-  position:relative;color:var(--cream);
-  min-height:min(58vh, 480px);
-  display:flex;align-items:flex-end;
-  overflow:hidden;
-}
-.hero-media{
-  position:absolute;inset:0;
-  background-image:var(--hero-photo);
-  background-size:cover;background-position:center 30%;
-}
-.hero-inner{position:relative;padding:64px 32px 48px;max-width:1180px;margin:0 auto;width:100%;text-align:center;}
-.hero h1{font-size:clamp(42px, 7vw, 84px);margin:18px 0 22px;}
-.hero-logo{height:clamp(90px, 16vw, 170px);width:auto;margin:18px auto 22px;}
-.hero-sub{font-size:19px;max-width:560px;color:rgba(246,239,227,0.86);margin:0 auto 34px;min-height:1.55em;}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;transform:translateY(-64px);}
-.hero .eyebrow{color:var(--tan);}
-
 /* section heading */
 .section{padding:88px 0;}
 #whats-on{padding-top:44px;}
@@ -218,8 +170,6 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 .foot-social{display:flex;gap:16px;}
 
 @media (max-width:900px){
-  .nav-links{display:none;}
-  .hamburger{display:block;}
   .card-grid{grid-template-columns:repeat(2,1fr);}
   .about{grid-template-columns:1fr;gap:36px;}
   .about-photo{max-width:360px;}
@@ -229,7 +179,6 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 @media (max-width:560px){
   .card-grid{grid-template-columns:1fr;}
   .foot-grid{grid-template-columns:1fr;}
-  .hero-cta .btn{width:100%;}
 }
 
 
@@ -261,65 +210,6 @@ footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
 
 
 
-/* Stable shared header sizing */
-.nav{
-  height:73px;
-  min-height:73px;
-}
-.nav-inner{
-  height:72px;
-  min-height:72px;
-  flex-wrap:nowrap;
-}
-.logo{
-  flex:0 0 auto;
-}
-.logo img{
-  height:70px;
-  min-height:70px;
-  max-height:70px;
-  width:auto;
-  max-width:none;
-}
-.nav-links{
-  flex:1 1 auto;
-  min-width:0;
-  justify-content:flex-end;
-  gap:clamp(14px, 2vw, 36px);
-  white-space:nowrap;
-}
-.nav-right{
-  flex:0 0 auto;
-}
-.hero{
-  height:480px;
-  min-height:480px;
-}
-.hero-logo{
-  height:170px;
-  min-height:170px;
-  max-height:170px;
-  width:auto;
-  max-width:calc(100vw - 64px);
-  object-fit:contain;
-}
-
-/* The full desktop menu no longer fits comfortably below this width. */
-@media (max-width:1180px){
-  .nav-links{display:none;}
-  .hamburger{display:block;}
-}
-
-@media (max-width:560px){
-  .hero-logo{
-    height:90px;
-    min-height:90px;
-    max-height:90px;
-  }
-}
-
-
-
 /* Prevent below-the-fold layouts from widening the page and changing apparent header scale */
 html{
   scrollbar-gutter:stable;
@@ -348,7 +238,7 @@ body{
 
 </style>
 </head>
-<body style="--hero-photo:url('./images/hero.png');">
+<body>
 
 <svg class="die-defs" aria-hidden="true">
 <defs>
@@ -361,7 +251,7 @@ body{
 </defs>
 </svg>
 
-<div id="site-header" style="min-height:72px;"></div>
+<div id="site-header" style="min-height:552px;"></div>
 
 <section class="section" id="faq" style="padding-top:56px;">
   <div class="wrap">
@@ -444,8 +334,10 @@ async function loadSiteHeader(){
   const mount = document.getElementById('site-header');
 
   try{
-    const response = await fetch('./header.html');
+    const headerRequestUrl = new URL('./header.html', window.location.href);
+    const response = await fetch(headerRequestUrl);
     if(!response.ok) throw new Error(`Header request failed: ${response.status}`);
+    const headerUrl = new URL(response.url || headerRequestUrl.href);
 
     const template = document.createElement('template');
     template.innerHTML = (await response.text()).trim();
@@ -456,11 +348,31 @@ async function loadSiteHeader(){
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     header.querySelectorAll('.nav-links a[href]').forEach(function(link){
-      if(link.getAttribute('href') === currentPage){
+      const href = link.getAttribute('href');
+
+      if(href === currentPage){
         link.classList.add('current');
         link.setAttribute('aria-current', 'page');
       }
+
+      if(href && !href.startsWith('#') && !/^[a-z][a-z0-9+.-]*:/i.test(href)){
+        link.href = new URL(href, headerUrl).href;
+      }
     });
+
+    fragment.querySelectorAll('img[src]').forEach(function(image){
+      const src = image.getAttribute('src');
+
+      if(src && !src.startsWith('/') && !/^[a-z][a-z0-9+.-]*:/i.test(src)){
+        image.src = new URL(src, headerUrl).href;
+      }
+    });
+
+    const sharedHeroMedia = fragment.querySelector('.hero-media');
+    if(sharedHeroMedia){
+      const heroImageUrl = new URL('./images/hero.png', headerUrl).href;
+      sharedHeroMedia.style.backgroundImage = `url("${heroImageUrl}")`;
+    }
 
     const hamburger = header.querySelector('.hamburger');
     const links = header.querySelector('.nav-links');
@@ -469,19 +381,13 @@ async function loadSiteHeader(){
 
     if(hamburger && links){
       hamburger.addEventListener('click', function(){
-        const open = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', String(!open));
-
-        if(open){
-          links.removeAttribute('style');
-        }else{
-          links.style.cssText = 'display:flex;position:absolute;top:72px;left:0;right:0;background:#173059;flex-direction:column;align-items:flex-start;padding:20px 32px;gap:18px;border-bottom:1px solid rgba(246,239,227,0.14);';
-        }
+        const open = links.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', String(open));
       });
 
       window.addEventListener('resize', function(){
-        if(window.matchMedia('(min-width:901px)').matches){
-          links.removeAttribute('style');
+        if(window.matchMedia('(min-width:1181px)').matches){
+          links.classList.remove('is-open');
           hamburger.setAttribute('aria-expanded', 'false');
         }
       });
