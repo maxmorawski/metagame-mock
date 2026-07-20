@@ -12,10 +12,35 @@
     *{box-sizing:border-box;margin:0;padding:0;}
     body{min-height:100vh;background:var(--cream);color:#1b1b1b;font-family:"Inter",Arial,sans-serif;}
     #site-header{min-height:553px;}
+    .holding-page{min-height:420px;display:grid;place-items:center;padding:64px 32px 88px;}
+    .holding-card{
+      width:min(100%,720px);padding:clamp(40px,7vw,72px);text-align:center;
+      background:#cee1ff;border:1px solid rgba(23,48,89,.16);border-radius:16px;
+      box-shadow:0 12px 32px rgba(23,48,89,.1);
+    }
+    .holding-card .eyebrow{margin-bottom:12px;font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--meeple);}
+    .holding-card h1{margin-bottom:18px;font-family:"Space Grotesk",sans-serif;font-size:clamp(32px,5vw,52px);line-height:1.05;color:var(--navy);}
+    .holding-card p:not(.eyebrow){max-width:540px;margin:0 auto 28px;font-size:17px;line-height:1.6;color:rgba(23,48,89,.76);}
+    .archive-button{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;
+      border-radius:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;
+      transition:transform .15s ease,background .15s ease;
+    }
+    .archive-button:hover{transform:translateY(-1px);background:#1f3352;}
   </style>
 </head>
 <body>
   <div id="site-header"></div>
+
+  <main class="holding-page">
+    <section class="holding-card" aria-labelledby="page-title">
+      <p class="eyebrow">Metagame 2026</p>
+      <h1 id="page-title">Schedule in progress</h1>
+      <p>We're still assembling this year's schedule. In the meantime, take a look at how last year's Metagame unfolded.</p>
+      <a class="archive-button" href="https://2025.metagame.games/schedule" target="_blank" rel="noopener">See last year's schedule <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
   <div id="site-footer"></div>
 
   <script>
