@@ -1,0 +1,88 @@
+<style>
+.site-footer{
+  background:var(--navy, #173059);
+  color:rgba(246,239,227,0.7);
+  padding:64px 0 28px;
+  font-family:'Inter',sans-serif;
+  line-height:1.55;
+}
+.site-footer *{box-sizing:border-box;}
+.site-footer .footer-wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.site-footer .foot-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:32px;
+  padding-bottom:44px;
+  border-bottom:1px solid var(--line-dark, rgba(246,239,227,0.14));
+}
+.site-footer .foot-logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:20px;
+  color:var(--cream, #fff5f2);
+  margin-bottom:14px;
+}
+.site-footer .foot-grid p{font-size:14px;max-width:260px;margin:0;}
+.site-footer .foot-col h4{
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--tan, #e2a85c);
+  margin:0 0 16px;
+}
+.site-footer .foot-col a{
+  display:block;
+  font-size:14.5px;
+  margin-bottom:10px;
+  color:rgba(246,239,227,0.75);
+  text-decoration:none;
+}
+.site-footer .foot-col a:hover,
+.site-footer .foot-col a.current{color:var(--cream, #fff5f2);}
+.site-footer .foot-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:24px;
+  font-size:13px;
+  flex-wrap:wrap;
+  gap:12px;
+}
+@media (max-width:900px){
+  .site-footer .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+  .site-footer .footer-wrap{padding:0 22px;}
+  .site-footer .foot-grid{grid-template-columns:1fr;}
+}
+</style>
+
+<footer class="site-footer">
+  <div class="footer-wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span style="color:var(--blue, #4d9ff7);">META</span><span style="color:var(--tan, #e2a85c);">GAME</span></div>
+        <p>ATTEND ATTEND ATTEND ATTEND</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="tickets.html">Tickets</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="childrens-programming.html">Children's Programming</a>
+        <a href="sponsors.html">Sponsors</a>
+        <a href="faq.html">FAQ</a>
+        <a href="night-market.html">The Night Market</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:team@metagame.games">team@metagame.games</a>
+        <a href="location.html">Location</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Metagame Convention</span>
+    </div>
+  </div>
+</footer>

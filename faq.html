@@ -158,27 +158,14 @@ img{max-width:100%;display:block;}
 .signup-form input:focus{outline:none;border-color:var(--blue);}
 .signup-note{margin-top:14px;font-size:13px;color:rgba(246,239,227,0.5);}
 
-/* footer */
-footer{background:var(--navy);color:rgba(246,239,227,0.7);padding:64px 0 28px;}
-.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:44px;border-bottom:1px solid var(--line-dark);}
-.foot-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:var(--cream);margin-bottom:14px;}
-.foot-grid p{font-size:14px;max-width:260px;}
-.foot-col h4{font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--tan);margin-bottom:16px;}
-.foot-col a{display:block;font-size:14.5px;margin-bottom:10px;color:rgba(246,239,227,0.75);}
-.foot-col a:hover{color:var(--cream);}
-.foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;flex-wrap:wrap;gap:12px;}
-.foot-social{display:flex;gap:16px;}
-
 @media (max-width:900px){
   .card-grid{grid-template-columns:repeat(2,1fr);}
   .about{grid-template-columns:1fr;gap:36px;}
   .about-photo{max-width:360px;}
   .testi-grid{grid-template-columns:1fr;}
-  .foot-grid{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:560px){
   .card-grid{grid-template-columns:1fr;}
-  .foot-grid{grid-template-columns:1fr;}
 }
 
 
@@ -323,35 +310,8 @@ Address: 2740 Telegraph Ave, Berkeley, CA 94705
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <div class="foot-logo"><span style="color:var(--blue);">META</span><span style="color:var(--tan);">GAME</span></div>
-        <p>ATTEND ATTEND ATTEND ATTEND</p>
-      </div>
-      <div class="foot-col">
-        <h4>Explore</h4>
-        <a href="tickets.html">Tickets</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="speakers.html">Speakers</a>
-        <a href="sponsors.html">Sponsors</a>
-        <a href="faq.html">FAQ</a>
-        <a href="night-market.html">The Night Market</a>
-      </div>
-
-      <div class="foot-col">
-        <h4>Contact</h4>
-        <a href="mailto:team@metagame.games">team@metagame.games</a>
-        <a href="location.html">Location</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Metagame Convention</span>
-    </div>
-  </div>
-</footer>
+<div id="site-footer"></div>
+<script src="./footer-loader.js" defer></script>
 
 <script>
 async function loadSiteHeader(){
