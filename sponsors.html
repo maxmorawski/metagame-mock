@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sponsors — Metagame 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#173059;--blue:#4d9ff7;--tan:#e2a85c;--cream:#fff5f2;--meeple:#d8502b;--meeple-dark:#b8431f;--line-dark:rgba(246,239,227,.14);}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{min-height:100vh;background:var(--cream);color:#1b1b1b;font-family:"Inter",Arial,sans-serif;}
+    #site-header{min-height:553px;}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <script>
+    async function loadSiteHeader(){
+      const mount = document.getElementById("site-header");
+
+      try{
+        const requestUrl = new URL("./header.html", window.location.href);
+        const response = await fetch(requestUrl);
+        if(!response.ok) throw new Error(`Header request failed: ${response.status}`);
+        const headerUrl = new URL(response.url || requestUrl.href);
+
+        const template = document.createElement("template");
+        template.innerHTML = (await response.text()).trim();
+        const fragment = template.content;
+        const siteHeader = fragment.querySelector(".site-header");
+        if(!siteHeader) throw new Error("header.html does not contain .site-header");
+
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+        fragment.querySelectorAll("a[href]").forEach(function(link){
+          const href = link.getAttribute("href");
+          if(href === currentPage){
+            link.classList.add("current");
+            link.setAttribute("aria-current", "page");
+          }
+          if(href && !href.startsWith("#") && !/^[a-z][a-z0-9+.-]*:/i.test(href)){
+            link.href = new URL(href, headerUrl).href;
+          }
+        });
+
+        fragment.querySelectorAll("img[src]").forEach(function(image){
+          const src = image.getAttribute("src");
+          if(src && !src.startsWith("/") && !/^[a-z][a-z0-9+.-]*:/i.test(src)){
+            image.src = new URL(src, headerUrl).href;
+          }
+        });
+
+        const heroMedia = fragment.querySelector(".hero-media");
+        if(heroMedia){
+          heroMedia.style.backgroundImage = `url("${new URL("./images/hero.png", headerUrl).href}")`;
+        }
+
+        const hamburger = fragment.querySelector(".hamburger");
+        const links = fragment.querySelector(".nav-links");
+        mount.replaceWith(fragment);
+
+        if(hamburger && links){
+          hamburger.addEventListener("click", function(){
+            const open = links.classList.toggle("is-open");
+            hamburger.setAttribute("aria-expanded", String(open));
+          });
+          window.addEventListener("resize", function(){
+            if(window.matchMedia("(min-width:1181px)").matches){
+              links.classList.remove("is-open");
+              hamburger.setAttribute("aria-expanded", "false");
+            }
+          });
+        }
+      }catch(error){
+        console.error("Unable to load the shared site header.", error);
+      }
+    }
+
+    loadSiteHeader();
+  </script>
+</body>
+</html>
