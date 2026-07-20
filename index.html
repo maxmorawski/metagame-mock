@@ -157,6 +157,7 @@ img{max-width:100%;display:block;}
 .signup-form input::placeholder{color:rgba(246,239,227,0.45);}
 .signup-form input:focus{outline:none;border-color:var(--blue);}
 .signup-note{margin-top:14px;font-size:13px;color:rgba(246,239,227,0.5);}
+.newsletter-link{color:#FA8072 !important;font-weight:700;}
 
 @media (max-width:900px){
   .card-grid{grid-template-columns:repeat(2,1fr);}
@@ -288,7 +289,7 @@ img{max-width:100%;display:block;}
       <p class="eyebrow" style="color:var(--felt);margin-bottom:10px;">The convention</p>
       <h2>I Once Again Don My Hat and Mask</h2>
       <p>Metagame started as one woman's manic dream. Now that dream has been passed to me. It burns hot in my skull.</p>
-      <p>So come, ye, to my con. Come and rejoice, for the games are upon us once more. Solve my puzzles. Hear the secrets. If you are bold of heart, venture to purchase a ticket; if you are curious but craven, subscribe to the newsletter. Perhaps you will learn more. Perhaps it will matter.</p>
+      <p>So come, ye, to my con. Come and rejoice, for the games are upon us once more. Solve my puzzles. Hear the secrets. If you are bold of heart, venture to purchase a ticket; if you are curious but craven, <a class="newsletter-link" href="#newsletter">subscribe to the newsletter</a>. Perhaps you will learn more. Perhaps it will matter.</p>
     </div>
     <div class="about-photo">
       <img src="./images/misc.jpg" alt="The Mask">
@@ -319,7 +320,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<section class="signup">
+<section class="signup" id="newsletter">
   <div class="wrap" style="max-width:600px;">
     <h2>Sign up for our newsletter</h2>
     <p>We will tell you of our progress.</p>
