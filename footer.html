@@ -20,8 +20,10 @@
   display:inline-block;
   margin-bottom:14px;
 }
-.site-footer .foot-logo img{display:block;width:min(100%, 220px);height:auto;}
+.site-footer .foot-logo img{display:block;width:min(100%, 145px);height:auto;}
 .site-footer .foot-grid p{font-size:14px;max-width:260px;margin:0;}
+.site-footer .foot-contact{margin-top:24px;}
+.site-footer .foot-nav{grid-column:span 2;}
 .site-footer .foot-col h4{
   font-size:13px;
   letter-spacing:0.08em;
@@ -38,6 +40,12 @@
 }
 .site-footer .foot-col a:hover,
 .site-footer .foot-col a.current{color:var(--cream, #fff5f2);}
+.site-footer .foot-link-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  column-gap:clamp(28px, 5vw, 72px);
+  align-items:start;
+}
 .site-footer .foot-address{
   margin-top:18px;
   font-style:normal;
@@ -58,12 +66,13 @@
   flex-wrap:wrap;
   gap:12px;
 }
-@media (max-width:900px){
-  .site-footer .foot-grid{grid-template-columns:1fr 1fr;}
-}
-@media (max-width:560px){
+@media (max-width:760px){
   .site-footer .footer-wrap{padding:0 22px;}
   .site-footer .foot-grid{grid-template-columns:1fr;}
+  .site-footer .foot-nav{grid-column:auto;}
+}
+@media (max-width:380px){
+  .site-footer .foot-link-grid{grid-template-columns:1fr;}
 }
 </style>
 
@@ -74,27 +83,32 @@
         <a class="foot-logo" href="index.html" aria-label="Metagame home">
           <img src="./images/logo.png" alt="Metagame">
         </a>
-        <p>ATTEND ATTEND ATTEND ATTEND</p>
+        <div class="foot-col foot-contact">
+          <h4>Contact &amp; Location</h4>
+          <a href="mailto:team@metagame.games">team@metagame.games</a>
+          <a href="faq.html">FAQ</a>
+          <address class="foot-address">
+            <strong>Light Haven</strong><br>
+            2740 Telegraph Ave<br>
+            Berkeley, CA 94705
+          </address>
+        </div>
       </div>
-      <div class="foot-col">
+      <div class="foot-col foot-nav">
         <h4>Explore</h4>
-        <a href="tickets.html">Tickets</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="speakers.html">Speakers</a>
-        <a href="childrens-programming.html">Children's Programming</a>
-        <a href="sponsors.html">Sponsors</a>
-        <a href="faq.html">FAQ</a>
-        <a href="night-market.html">The Night Market</a>
-      </div>
-      <div class="foot-col">
-        <h4>Contact &amp; Location</h4>
-        <a href="mailto:team@metagame.games">team@metagame.games</a>
-        <a href="faq.html">FAQ</a>
-        <address class="foot-address">
-          <strong>Light Haven</strong><br>
-          2740 Telegraph Ave<br>
-          Berkeley, CA 94705
-        </address>
+        <div class="foot-link-grid">
+          <div>
+            <a href="tickets.html">Tickets</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="speakers.html">Speakers</a>
+            <a href="childrens-programming.html">Children's Programming</a>
+          </div>
+          <div>
+            <a href="sponsors.html">Sponsors</a>
+            <a href="faq.html">FAQ</a>
+            <a href="night-market.html">The Night Market</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="foot-bottom">
