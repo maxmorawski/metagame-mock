@@ -362,7 +362,7 @@
       background:#000;
       display:flex;
       align-items:center;
-      padding:clamp(1.25rem, 3vw, 2.25rem) calc(var(--vine-w) + 0.5in) clamp(2.5rem, 5vw, 4rem);
+      padding:clamp(1.25rem, 3vw, 2.25rem) calc(var(--vine-w) + 0.2in) clamp(2.5rem, 5vw, 4rem);
     }
 
     .booths-inner{
@@ -377,26 +377,17 @@
 
     .booth-grid{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:clamp(1rem, 2.5vw, 1.75rem);
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:clamp(1.5rem, 3vw, 2.75rem) clamp(1rem, 2.5vw, 2rem);
     }
 
     .booth-card{
       --booth-accent:var(--title-rgb);
       position:relative;
-      display:grid;
-      place-items:center;
       min-width:0;
-      padding:clamp(1rem, 2vw, 1.6rem);
-      border:1px solid rgba(var(--title-rgb), 0.38);
-      border-radius:14px 4px;
-      background:
-        radial-gradient(circle at 0 0, rgba(var(--booth-accent), 0.15), transparent 35%),
-        radial-gradient(circle at 100% 100%, rgba(var(--booth-accent), 0.09), transparent 38%),
-        rgba(255,255,255,0.012);
-      box-shadow:
-        inset 0 0 24px rgba(var(--booth-accent), 0.04),
-        0 0 18px rgba(var(--booth-accent), 0.045);
+      aspect-ratio:2677 / 2048;
+      isolation:isolate;
+      filter:drop-shadow(0 0 18px rgba(var(--booth-accent), 0.08));
     }
 
     .booth-card:nth-child(3n + 1){ --booth-accent:194,94,53; }
@@ -406,33 +397,87 @@
     .booth-card::before{
       content:"";
       position:absolute;
-      inset:6px;
-      border:1px solid rgba(var(--title-rgb), 0.12);
-      border-radius:9px 2px;
+      z-index:0;
+      inset:38% 18% 5%;
+      background:radial-gradient(ellipse at center, rgba(var(--booth-accent), 0.08), transparent 72%);
       pointer-events:none;
     }
 
     .booth-tent{
+      position:absolute;
+      z-index:1;
+      inset:0;
       display:block;
-      width:min(100%, 300px);
-      height:auto;
+      width:100%;
+      height:100%;
+      object-fit:fill;
     }
 
-    @media (max-width:900px){
-      .booth-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-      }
+    .booth-copy{
+      position:absolute;
+      z-index:2;
+      inset:40% 18% 5%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(0.35rem, 0.8vw, 0.7rem);
+      text-align:center;
+      text-shadow:0 1px 7px #000, 0 0 16px #000;
     }
 
-    @media (max-width:600px){
+    .booth-copy h3{
+      font-family:"Bodoni Moda", Didot, Georgia, serif;
+      font-size:clamp(1.05rem, 2.1vw, 1.55rem);
+      font-weight:500;
+      line-height:1.05;
+      color:var(--title);
+    }
+
+    .booth-copy p{
+      max-width:36ch;
+      font-family:"EB Garamond", Georgia, serif;
+      font-size:clamp(0.78rem, 1.25vw, 1rem);
+      line-height:1.35;
+      color:var(--copy);
+      opacity:0.9;
+    }
+
+    @media (max-width:820px){
       .booth-grid{
         grid-template-columns:1fr;
+      }
+
+      .booth-card{
+        width:min(100%, 570px);
+        margin:0 auto;
       }
     }
 
     @media (max-width:480px){
       :root{
-        --vine-w:34px;
+        --vine-w:24px;
+      }
+
+      .booths{
+        padding-inline:calc(var(--vine-w) + 0.25rem);
+      }
+
+      .booth-card{
+        min-height:270px;
+      }
+
+      .booth-copy{
+        inset:39% 16% 4%;
+      }
+
+      .booth-copy h3{
+        font-size:1.08rem;
+      }
+
+      .booth-copy p{
+        font-size:0.78rem;
+        line-height:1.25;
       }
     }
   </style>
@@ -528,7 +573,7 @@
     </div>
     <div class="intro-inner">
       <h2 class="intro-heading">What is the Night Market?</h2>
-      <p class="intro-body">The Night Market is open to the general public to delight, confuse, and provide opportunity for us to not lose money at this convention.</p>
+      <p class="intro-body"><strong>Open to the public!</strong> The Night Market is an opportunity to exchange goods and services with fellow game aficionados. Anyone with or without a ticket to the main event is welcome. Come and find booths based around:</p>
     </div>
   </section>
 
@@ -538,22 +583,46 @@
 
       <div class="booth-grid">
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-arts.jpg" alt="Arts booth">
+          <img class="booth-tent" src="images/night-market-images/tent-arts.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Games &amp; Puzzles</h3>
+            <p>Indie TTRPG, jigsaw puzzle, five-dimensional Rubik's cube, or escape room in a box—for sale, right here!</p>
+          </div>
         </div>
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-jobs.jpg" alt="Jobs booth">
+          <img class="booth-tent" src="images/night-market-images/tent-jobs.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Other Physical Stuff</h3>
+            <p>Arts, crafts, foods, books, and take-home items that don't fit in the games-and-puzzles category.</p>
+          </div>
         </div>
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-experiences.jpg" alt="Experiences booth">
+          <img class="booth-tent" src="images/night-market-images/tent-experiences.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Experiences</h3>
+            <p>Try on a weird VR immersive bodysuit, get your fortune told, or have a phenomenological time.</p>
+          </div>
         </div>
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-arts.jpg" alt="Arts booth">
+          <img class="booth-tent" src="images/night-market-images/tent-jobs.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Job Market</h3>
+            <p>People looking to hire, get hired, or otherwise promote their company or themselves. Open to either side of the job market!</p>
+          </div>
         </div>
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-jobs.jpg" alt="Jobs booth">
+          <img class="booth-tent" src="images/night-market-images/tent-experiences.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Black Market</h3>
+            <p>Rights to middle names, tickets to cheat in your next RPG, and more. Black market goods must still be legal!</p>
+          </div>
         </div>
         <div class="booth-card">
-          <img class="booth-tent" src="images/night-market-images/tent-experiences.jpg" alt="Experiences booth">
+          <img class="booth-tent" src="images/night-market-images/tent-arts.jpg" alt="" aria-hidden="true">
+          <div class="booth-copy">
+            <h3>Information Booth</h3>
+            <p>Like a poster session, without the standards.</p>
+          </div>
         </div>
       </div>
 
