@@ -1,4 +1,4 @@
-  <style>
+<style>
 .site-footer{
   background:var(--navy, #173059);
   color:rgba(246,239,227,0.7);
@@ -10,18 +10,17 @@
 .site-footer .footer-wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
 .site-footer .foot-grid{
   display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1fr;
-  gap:32px;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  align-items:start;
+  gap:clamp(28px, 5vw, 72px);
   padding-bottom:44px;
   border-bottom:1px solid var(--line-dark, rgba(246,239,227,0.14));
 }
 .site-footer .foot-logo{
-  font-family:'Space Grotesk',sans-serif;
-  font-weight:700;
-  font-size:20px;
-  color:var(--cream, #fff5f2);
+  display:inline-block;
   margin-bottom:14px;
 }
+.site-footer .foot-logo img{display:block;width:min(100%, 220px);height:auto;}
 .site-footer .foot-grid p{font-size:14px;max-width:260px;margin:0;}
 .site-footer .foot-col h4{
   font-size:13px;
@@ -39,6 +38,17 @@
 }
 .site-footer .foot-col a:hover,
 .site-footer .foot-col a.current{color:var(--cream, #fff5f2);}
+.site-footer .foot-address{
+  margin-top:18px;
+  font-style:normal;
+  font-size:14.5px;
+  line-height:1.55;
+  color:rgba(246,239,227,0.75);
+}
+.site-footer .foot-address strong{
+  color:var(--cream, #fff5f2);
+  font-weight:600;
+}
 .site-footer .foot-bottom{
   display:flex;
   justify-content:space-between;
@@ -61,7 +71,9 @@
   <div class="footer-wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo"><span style="color:var(--blue, #4d9ff7);">META</span><span style="color:var(--tan, #e2a85c);">GAME</span></div>
+        <a class="foot-logo" href="index.html" aria-label="Metagame home">
+          <img src="./images/logo.png" alt="Metagame">
+        </a>
         <p>ATTEND ATTEND ATTEND ATTEND</p>
       </div>
       <div class="foot-col">
@@ -75,10 +87,14 @@
         <a href="night-market.html">The Night Market</a>
       </div>
       <div class="foot-col">
-        <h4>Contact</h4>
+        <h4>Contact &amp; Location</h4>
         <a href="mailto:team@metagame.games">team@metagame.games</a>
-        <a href="location.html">Location</a>
         <a href="faq.html">FAQ</a>
+        <address class="foot-address">
+          <strong>Light Haven</strong><br>
+          2740 Telegraph Ave<br>
+          Berkeley, CA 94705
+        </address>
       </div>
     </div>
     <div class="foot-bottom">
